@@ -8,8 +8,24 @@ This is a template project for using Rust in Godot, created based on the officia
 - Provides a simple "Hello, World!" example to demonstrate how to integrate Rust code into Godot.
 - Setup is based on the [Hello World](https://godot-rust.github.io/book/intro/hello-world.html) tutorial from the official Godot-Rust book.
 
+## Version 1.1.0
+
+Updated to the latest stable release of both Godot (4.5+) and Godot Rust (0.4+)
+
+Breaking changes:
+- The `rust` directory has been moved into the project, as the Godot project itself became the root of this repository.
+- The `rust-template` dir dissapeared.
+- The lib and the Rust crate have been renamed to `grust` to further reflect that are different setups.
+  
+> Current users should NOT update to reflect this change as you already have setup your work environment.
+
+This decision was made to enable a plug-n-play version (after building) when downloading the template from the Godot Assets Store.
+
+The minimum required version has been bumped to 4.5.
+An experienced user will find easy to reverse this decision, if needed, and a newcomer will be meet with the latest stable release.
+
 ## Requirements
-- **Godot Engine** version 4.4 or later.
+- **Godot Engine** version 4.5 or later.
 - **Rust** installed. You can download it from the official website: https://www.rust-lang.org/
 - **Cargo** – the Rust package manager, which is included when installing Rust.
 
@@ -19,10 +35,10 @@ This is a template project for using Rust in Godot, created based on the officia
 
 2. Make sure you have Godot and Rust set up correctly.
 
-3. Navigate to the `rust-template-godot` project folder and open the `rust-template` project with Godot.
+3. Navigate to the `rust-template-godot` project folder and open the project with Godot.
 
 4. Build the Rust code:
-   - In the terminal, go to the project `rust` directory and run:
+   - In the terminal, go to the project `grust` directory and run:
      ```
      cargo build
      ```
@@ -38,16 +54,13 @@ To modify the Rust code:
 2. Add your custom functionality or game logic written in Rust.
 3. After making changes, rebuild your project using `cargo build` and test the integration in Godot.
 
-### Visual Studio Code
+### Reload
 
-If you are working with VS Code, I recommend you to use the `rust-analyzer` extension and setting the `Check: Command` to `build`. This enables you library to be compiled each time you save your files, allowing for fast changes to be applied inside the Godot Editor without having to compile them in the terminal yourself each time.
-
-> This is only useful in Godot 4.2+ since it allows to import the changes without reloading the project. Since this template aims for 4.4+, this should not be a problem. Keep this in mind if you try a lesser version though.
+> This is only useful in Godot 4.2+ since it allows to import the changes without reloading the project. Since this template aims for 4.5+, this should not be a problem. Keep this in mind if you try a lesser version though.
 
 ## Project Structure
 
-- `rust`: The Rust directory for writing code.
-- `rust-template`: The Godot project directory, where scenes and assets are located.
+- `grust`: The Rust directory for writing code.
 - `README.md`: This file.
 - `LICENSE` The MIT license
 
