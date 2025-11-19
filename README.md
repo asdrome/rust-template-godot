@@ -2,6 +2,11 @@
 
 This is a template project for using Rust in Godot, created based on the official [Godot-Rust](https://godot-rust.github.io/book/intro/hello-world.html) guide. It serves as a starting point for developers who want to integrate Rust into their Godot projects for better performance and type safety.
 
+## Tutorial
+
+I've made a basic video of the making of this template: [Tutorial](https://youtu.be/7T7HRiR1_94)
+It doesn't go into deep detail since just follows the Godot Rust book but it may be of interest for someone.
+
 ## Features
 - Template project to get started with Godot and Rust.
 - Configured to work with Godot Engine and the [Godot Rust bindings](https://github.com/godot-rust/gdext).
@@ -22,7 +27,7 @@ Breaking changes:
 This decision was made to enable a plug-n-play version (after building) when downloading the template from the Godot Assets Store.
 
 The minimum required version has been bumped to 4.5.
-An experienced user will find easy to reverse this decision, if needed, and a newcomer will be meet with the latest stable release.
+An experienced user will find easy to reverse this decision, if needed, and a newcomer will be met with the latest stable release.
 
 ## Requirements
 - **Godot Engine** version 4.5 or later.
