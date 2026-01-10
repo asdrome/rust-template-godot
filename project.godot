@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Rust Template Godot"
 config/description="Minimal Template Project based on the Getting Started Guide from the Godot Rust Book."
-config/version="1.1.0"
+config/version="1.2.0"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="uid://dl0701ikiyhue"
@@ -20,3 +24,4 @@ config/icon="uid://dl0701ikiyhue"
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

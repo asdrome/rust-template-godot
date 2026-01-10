@@ -1,0 +1,46 @@
+# Use Slim Rust as base image
+FROM rust:slim
+
+# 1. Minimal dependencies installation
+RUN apt-get update && apt-get install -y \
+    git \
+    python3 \
+    clang libclang-dev gcc-multilib \
+    cmake \
+    curl \
+    wget \
+    unzip \
+    xz-utils \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+# 2. Default to nightly Rust and add wasm32-unknown-emscripten target
+RUN rustup toolchain install nightly \
+    && rustup default nightly \
+    && rustup target add wasm32-unknown-emscripten \
+    && rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+
+# 3. Install Emscripten (Emsdk)
+# We install it in /opt to make it accessible
+ARG EMSDK_VERSION="latest"
+RUN git clone --depth 1 https://github.com/emscripten-core/emsdk.git /opt/emsdk \
+    && cd /opt/emsdk \
+    && ./emsdk install ${EMSDK_VERSION} \
+    && ./emsdk activate ${EMSDK_VERSION}
+
+# 4. Godot Engine 
+# Install a specific version of Godot (change the version as needed)
+ARG GODOT_VERSION="4.5.1-stable"
+RUN wget -q https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip \
+    && unzip Godot_v${GODOT_VERSION}_linux.x86_64.zip \
+    && mv Godot_v${GODOT_VERSION}_linux.x86_64 /usr/local/bin/godot \
+    && rm Godot_v${GODOT_VERSION}_linux.x86_64.zip
+
+# 5. Environment variables
+ENV GODOT4_BIN=/usr/local/bin/godot
+# This avoids having to 'source' every time
+ENV EMSDK=/opt/emsdk
+ENV PATH="${EMSDK}:${EMSDK}/upstream/emscripten:${EMSDK}/node/current/bin:${PATH}"
+RUN cd /opt/emsdk && ./emsdk activate ${EMSDK_VERSION}
+
+WORKDIR /workspace

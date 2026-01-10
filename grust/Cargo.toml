@@ -1,10 +1,23 @@
 [package]
 name = "grust"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 
 [lib]
 crate-type = ["cdylib"] # Compile this crate to a dynamic C library.
 
-[dependencies]
-godot = "0.4.2"
+[dependencies.godot]
+git = "https://github.com/godot-rust/gdext"
+branch = "master"
+
+[features]
+# Ensure that enabling `nothreads` for the main crate also enables
+# that feature for other crates.
+wasm = [
+    "godot/api-custom",
+    "godot/experimental-wasm",
+    "godot/lazy-function-tables",
+]
+nothreads = []
+threads = []
+wasm-nothreads = ["wasm", "threads", "godot/experimental-wasm-nothreads"]
