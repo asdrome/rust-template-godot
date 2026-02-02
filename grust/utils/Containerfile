@@ -30,7 +30,7 @@ RUN git clone --depth 1 https://github.com/emscripten-core/emsdk.git /opt/emsdk 
 
 # 4. Godot Engine 
 # Install a specific version of Godot (change the version as needed)
-ARG GODOT_VERSION="4.5.1-stable"
+ARG GODOT_VERSION="4.6-stable"
 RUN wget -q https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}/Godot_v${GODOT_VERSION}_linux.x86_64.zip \
     && unzip Godot_v${GODOT_VERSION}_linux.x86_64.zip \
     && mv Godot_v${GODOT_VERSION}_linux.x86_64 /usr/local/bin/godot \
