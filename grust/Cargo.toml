@@ -7,17 +7,13 @@ edition = "2024"
 crate-type = ["cdylib"] # Compile this crate to a dynamic C library.
 
 [dependencies]
-# Update to the latest stable gdext when possible.
-godot = { git = "https://github.com/godot-rust/gdext", tag = "v0.4.5" }
+godot = "0.5.0"
+
 
 [features]
 # Ensure that enabling `nothreads` for the main crate also enables
 # that feature for other crates.
-wasm = [
-    "godot/api-custom",
-    "godot/experimental-wasm",
-    "godot/lazy-function-tables",
-]
+wasm = ["godot/experimental-wasm", "godot/lazy-function-tables"]
 # Markers
 nothreads = []
 threads = []

@@ -17,11 +17,13 @@ It doesn't go into deep detail since just follows the Godot Rust book but it may
 
 ### Auto Reload
 
-> This is only useful in Godot 4.2+ since it allows to import the changes without reloading the project. Since this template aims for 4.5+, this should not be a problem. Keep this in mind if you try a lesser version though.
+> This is only useful in Godot 4.2+ since it allows to import the changes without reloading the project. Since this template aims for 4.6+, this should not be a problem. Keep this in mind if you try a lesser version though.
 
 ## Changelog
 
 ### What's New in v1.2.0
+
+Updated to the latest stable version of Godot (4.6+) and Godot Rust (0.5+)
 
 Web (WebAssembly) Support: Ready-to-use configuration for web exports.
 
@@ -29,6 +31,9 @@ Web (WebAssembly) Support: Ready-to-use configuration for web exports.
 - Multithreading: Includes specific presets for both Single-threaded and Multi-threaded Web builds.
 - Containerized Build Environment: A dedicated Containerfile to compile for Web without needing to install Emscripten/LLVM locally.
 - A `web-build.sh` script to building both with and without multi-threading support. _Similar_ to the [docs](https://godot-rust.github.io/book/toolchain/export-web.html#building-both-with-and-without-multi-threading-support).
+
+The minimum required version has been bumped to 4.6.
+An experienced user will find easy to reverse this decision, if needed, and a newcomer will be met with the latest stable release.
 
 ### Version 1.1.0
 
@@ -43,11 +48,10 @@ Breaking changes:
 
 This decision was made to enable a plug-n-play version (after building) when downloading the template from the Godot Assets Store.
 
-The minimum required version has been bumped to 4.5.
-An experienced user will find easy to reverse this decision, if needed, and a newcomer will be met with the latest stable release.
+The minimum required version was bumped to 4.5.
 
 ## Requirements
-- **Godot Engine** version 4.5 or later.
+- **Godot Engine** version 4.6 or later.
 - **Rust** installed. You can download it from the official website: https://www.rust-lang.org/
 - **Cargo** – the Rust package manager, which is included when installing Rust.
 
@@ -58,9 +62,7 @@ Additional requirements as described (briefly) in the [documentation](https://go
 - **Emscripten**. I recommend using 4.0+ version (as opposed to the 3.1.74v from the guide) since main Godot is compiled against it. [See the docs](https://docs.godotengine.org/en/latest/engine_details/development/compiling/compiling_for_web.html#doc-compiling-for-web).
   > Emscripten itself has some dependencies, including Python.
 
-- **LLVM**. Some additional libraries may be required for this. Documentation on this is sparse, but you can refer to the `./grust/utils/Containerfile` to see what we are using on top of a functional `cargo` setup in Debian.
-  > Notably `clang` and `gcc-multilib` seem to be needed for cross-compiling with `emcc`.
-
+- **LLVM**. Is not required as of godot-rust 0.5+.
 - For the containerized env any of the [recommended options](#containerized-development-foss-first), or Docker.
 
 ## Installation
